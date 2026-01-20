@@ -1,3 +1,12 @@
 <resources>
-	<string name="app_name">SportmateNoBullshit</string>
+	<string name="app_name" translatable="false">SportMate</string>
+	
+	<string name="app_url" translatable="false">https://sportmate.hu/login</string>
+	
+	<string name="menu_web" translatable="false">SportMate</string>
+	<string name="menu_qr">My QRcode</string>
+	
+	<string name="menu_qr_no_token">You must log in first in the SportMate page!</string>
+	<string name="menu_qr_time_left">Time left: %d</string>
+	<string name="menu_qr_btn_refresh">Refresh QR code</string>
 </resources>

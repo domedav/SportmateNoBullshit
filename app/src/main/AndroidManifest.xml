@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools">
-	<uses-permission android:name="INTERNET"/>
+	
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	
 	<application
 		android:allowBackup="false"
 		android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,11 +13,15 @@
 		android:label="@string/app_name"
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
-		android:theme="@style/Theme.SportmateNoBullshit">
+		android:theme="@style/Theme.SportmateNoBullshit"
+		android:usesCleartextTraffic="false"
+		tools:targetApi="23">
+		
 		<activity
 			android:name=".MainActivity"
 			android:exported="true"
 			android:label="@string/app_name"
+			android:configChanges="orientation|screenSize|keyboardHidden"
 			android:theme="@style/Theme.SportmateNoBullshit">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -22,5 +29,4 @@
 			</intent-filter>
 		</activity>
 	</application>
-
 </manifest>

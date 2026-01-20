@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="menu_qr">QR kódom</string>
+	
+	<string name="menu_qr_no_token">Először jelentkezz be a SportMate oldalon!</string>
+	<string name="menu_qr_time_left">Hátralévő idő: %d</string>
+	<string name="menu_qr_btn_refresh">Új QR kód kérése</string>
+</resources>
