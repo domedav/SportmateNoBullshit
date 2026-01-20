@@ -37,7 +37,7 @@ fun QrScreen(
     qrData: String?,
     onRefresh: () -> Unit
 ) {
-    val qrColor = MaterialTheme.colorScheme.onSurface.toArgb()
+    val qrColor = android.graphics.Color.BLACK
 
     var timeLeft by remember { mutableIntStateOf(30) }
     var isRefreshing by remember { mutableStateOf(false) }
@@ -145,7 +145,7 @@ private fun generateMaterialQrBitmap(content: String, colorInt: Int): Bitmap? {
 
         for (x in 0 until width) {
             for (y in 0 until height) {
-                bitmap[x, y] = if (bitMatrix[x, y]) colorInt else android.graphics.Color.TRANSPARENT
+                bitmap[x, y] = if (bitMatrix[x, y]) colorInt else android.graphics.Color.WHITE
             }
         }
         bitmap
