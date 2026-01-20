@@ -5,7 +5,7 @@ keywords: Sportmate alternative, open source gym app, Sportmate NoBS, privacy fr
 image: https://raw.githubusercontent.com/domedav/SportmateNoBullshit/master/.github/Screenshot_20260120_211920.jpg
 ---
 
-# Sportmate NoBS (No Bullshit) 🏋️‍♂️
+# Sportmate NoBS 🏋️‍♂️
 
 **The open-source, privacy-first alternative to the official Sportmate app.**
 
