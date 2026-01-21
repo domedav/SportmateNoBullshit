@@ -19,4 +19,4 @@ local.properties
 /app/release/
 keystore.properties
 releasekey.jks
-.kotlin/sessions/kotlin-compiler-12646505860935859618.salive
+/.kotlin/sessions/
