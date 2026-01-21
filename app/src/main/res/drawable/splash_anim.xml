@@ -30,14 +30,6 @@
         <aapt:attr name="android:animation">
             <set>
                 <objectAnimator
-                    android:propertyName="trimPathEnd"
-                    android:startOffset="44"
-                    android:duration="1456"
-                    android:valueFrom="0"
-                    android:valueTo="1"
-                    android:valueType="floatType"
-                    android:interpolator="@android:interpolator/linear_out_slow_in"/>
-                <objectAnimator
                     android:propertyName="strokeWidth"
                     android:duration="990"
                     android:valueFrom="0"

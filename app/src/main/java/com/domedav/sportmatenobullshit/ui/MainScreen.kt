@@ -35,6 +35,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -49,6 +50,8 @@ import com.domedav.sportmatenobullshit.R
 import com.domedav.sportmatenobullshit.data.PreferencesManager
 import com.domedav.sportmatenobullshit.data.SportmateApi
 import com.domedav.sportmatenobullshit.data.TokenManager
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 
 sealed class TabItem(
@@ -60,6 +63,7 @@ sealed class TabItem(
     object Qr : TabItem(R.string.menu_qr, Icons.Filled.QrCode, 1)
 }
 
+@OptIn(FlowPreview::class)
 @Composable
 fun MainScreen(topPadding: Dp) {
     val tabItems = listOf(TabItem.Web, TabItem.Qr)
@@ -113,8 +117,12 @@ fun MainScreen(topPadding: Dp) {
         }
     }
 
-    LaunchedEffect(pagerState.currentPage) {
-        prefsManager.saveLastTab(pagerState.currentPage)
+    LaunchedEffect(pagerState) {
+        snapshotFlow { pagerState.currentPage }
+            .debounce(300)
+            .collect { page ->
+                prefsManager.saveLastTab(page)
+            }
     }
 
     LaunchedEffect(Unit) {
