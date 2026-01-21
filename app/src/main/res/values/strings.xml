@@ -1,12 +1,18 @@
 <resources>
-	<string name="app_name" translatable="false">SportMate</string>
+	<string name="app_name" translatable="false">SportMate NoBS</string>
 	
 	<string name="app_url" translatable="false">https://sportmate.hu/login</string>
+	<string name="app_url_loggedin" translatable="false">https://sportmate.hu/profile</string>
 	
 	<string name="menu_web" translatable="false">SportMate</string>
 	<string name="menu_qr">My QRcode</string>
 	
 	<string name="menu_qr_no_token">You must log in first in the SportMate page!</string>
 	<string name="menu_qr_time_left">Time left: %d</string>
+	<string name="menu_qr_how_to_use">Show this code to the gate in order to enter!</string>
 	<string name="menu_qr_btn_refresh">Refresh QR code</string>
+	
+	<string name="msg_no_internet">No internet connection</string>
+	<string name="msg_no_internet_description">You must have an internet connection to use this application</string>
+	<string name="msg_press_back_again">Press again to exit</string>
 </resources>

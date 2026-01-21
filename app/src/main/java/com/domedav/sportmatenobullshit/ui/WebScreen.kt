@@ -1,22 +1,33 @@
 package com.domedav.sportmatenobullshit.ui
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.view.ViewGroup
 import android.webkit.CookieManager
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.domedav.sportmatenobullshit.R
+import com.domedav.sportmatenobullshit.data.TokenManager
 import com.domedav.sportmatenobullshit.utils.WebAppInterface
+import kotlinx.coroutines.delay
 
 @Composable
 @SuppressLint("SetJavaScriptEnabled")
@@ -25,7 +36,13 @@ fun WebScreen(
     onTokenFound: (String) -> Unit
 ) {
     val context = LocalContext.current
-    val startUrl = stringResource(R.string.app_url)
+
+    var doubleBackToExitPressedOnce by remember { mutableStateOf(false) }
+
+    val tokenManager = remember { TokenManager(context) }
+    val userToken by tokenManager.userToken.collectAsState(initial = null)
+
+    val startUrl = if(userToken == null) stringResource(R.string.app_url) else stringResource(R.string.app_url_loggedin)
 
     // Script to intercept login response
     val interceptionScript = """
@@ -111,6 +128,29 @@ fun WebScreen(
         }
     }
 
+    var doublepressBackButton = stringResource(R.string.msg_press_back_again)
+
+    BackHandler(enabled = true) {
+        if (webView.canGoBack()) {
+            // navigate as webview
+            webView.goBack()
+        } else {
+            if (doubleBackToExitPressedOnce) {
+                (context as? Activity)?.finish() // close app
+            } else {
+                doubleBackToExitPressedOnce = true
+                Toast.makeText(context, doublepressBackButton, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    LaunchedEffect(doubleBackToExitPressedOnce) {
+        if (doubleBackToExitPressedOnce) {
+            delay(2000)
+            doubleBackToExitPressedOnce = false
+        }
+    }
+
     DisposableEffect(Unit) {
         onDispose {
             // Ensure cookies are flushed one last time when leaving
@@ -125,15 +165,8 @@ fun WebScreen(
             .fillMaxSize()
             .padding(top = topPadding),
         factory = { ctx ->
-            SwipeRefreshLayout(ctx).apply {
-                (webView.parent as? ViewGroup)?.removeView(webView)
-
-                addView(webView)
-                setOnRefreshListener {
-                    webView.reload()
-                    isRefreshing = false
-                }
-            }
+            (webView.parent as? ViewGroup)?.removeView(webView)
+            webView
         }
     )
 }

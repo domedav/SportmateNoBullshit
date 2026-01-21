@@ -7,7 +7,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-private val Context.dataStore by preferencesDataStore("user_prefs")
+private val Context.dataStore by preferencesDataStore("user_tokens")
 
 class TokenManager(private val context: Context) {
     companion object {

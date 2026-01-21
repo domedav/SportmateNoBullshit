@@ -4,5 +4,10 @@
 	
 	<string name="menu_qr_no_token">Először jelentkezz be a SportMate oldalon!</string>
 	<string name="menu_qr_time_left">Hátralévő idő: %d</string>
+	<string name="menu_qr_how_to_use">Mutasd meg ezt a kódot a beléptető kapunak, hogy betudj menni!</string>
 	<string name="menu_qr_btn_refresh">Új QR kód kérése</string>
+	
+	<string name="msg_no_internet">Nincs internetkapcsolat</string>
+	<string name="msg_no_internet_description">Az alkalmazás használatához kötelező az internetkapcsolat</string>
+	<string name="msg_press_back_again">Nyomd meg újra a kilépéshez</string>
 </resources>

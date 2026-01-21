@@ -16,8 +16,8 @@ android {
         applicationId = "com.domedav.sportmatenobullshit"
         minSdk = 23 // cant be 21, as dependencies require API 23 min
         targetSdk = 36
-        versionCode = 20260120
-        versionName = "2026.01.20"
+        versionCode = 20260121
+        versionName = "2026.01.21"
 
         vectorDrawables {
             useSupportLibrary = true
