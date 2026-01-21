@@ -1,5 +1,5 @@
 theme: jekyll-theme-minimal
-title: Sportmate NoBS (No Bullshit)
+title: Sportmate NoBS
 description: The lightweight, open-source, privacy-first alternative for Sportmate. No spyware, no tracking, just gym entry.
 url: "https://domedav.github.io" # Your base hostname
 baseurl: "/SportmateNoBullshit" # The subpath of your site
