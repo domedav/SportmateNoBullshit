@@ -16,8 +16,8 @@ android {
         applicationId = "com.domedav.sportmatenobullshit"
         minSdk = 23 // cant be 21, as dependencies require API 23 min
         targetSdk = 36
-        versionCode = 20260121
-        versionName = "2026.01.21"
+        versionCode = 20260122
+        versionName = "2026.01.22"
 
         vectorDrawables {
             useSupportLibrary = true
@@ -108,4 +108,7 @@ dependencies {
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.swiperefreshlayout)
+
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.material)
 }

@@ -28,7 +28,7 @@ Sportmate NoBS is an open-source, reverse-engineered client for the Sportmate pl
 
 Ready to upgrade your gym experience?
 
-## [👉 Download Latest APK](https://github.com/domedav/SportmateNoBullshit/releases/download/1.1/sportmate-nobs-v1_1.apk)
+## [👉 Download Latest APK](https://github.com/domedav/SportmateNoBullshit/releases/download/1.2/sportmate-nobs-v1_2.apk)
 
 *View all versions on the [Releases Page](https://github.com/domedav/SportmateNoBullshit/releases/)*
 

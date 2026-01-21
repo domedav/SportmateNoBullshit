@@ -77,6 +77,10 @@ fun QrScreen(
         }
     }
 
+    LaunchedEffect(qrData) {
+        if (qrData != null) timeLeft = 30
+    }
+
     val qrBitmap = remember(qrData, qrColor) {
         if (qrData != null) generateMaterialQrBitmap(qrData, qrColor) else null
     }

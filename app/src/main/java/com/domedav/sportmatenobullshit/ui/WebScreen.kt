@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,7 +24,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.domedav.sportmatenobullshit.R
-import com.domedav.sportmatenobullshit.data.TokenManager
 import com.domedav.sportmatenobullshit.utils.WebAppInterface
 import kotlinx.coroutines.delay
 
@@ -33,16 +31,18 @@ import kotlinx.coroutines.delay
 @SuppressLint("SetJavaScriptEnabled")
 fun WebScreen(
     topPadding: Dp,
+    hasToken: Boolean,
     onTokenFound: (String) -> Unit
 ) {
     val context = LocalContext.current
 
     var doubleBackToExitPressedOnce by remember { mutableStateOf(false) }
+    var webViewRef by remember { mutableStateOf<WebView?>(null) }
 
-    val tokenManager = remember { TokenManager(context) }
-    val userToken by tokenManager.userToken.collectAsState(initial = null)
+    val loggedInUrl = stringResource(R.string.app_url_loggedin)
+    val loginUrl = stringResource(R.string.app_url)
 
-    val startUrl = if(userToken == null) stringResource(R.string.app_url) else stringResource(R.string.app_url_loggedin)
+    val targetUrl = if(!hasToken) loginUrl else loggedInUrl
 
     // Script to intercept login response
     val interceptionScript = """
@@ -124,11 +124,13 @@ fun WebScreen(
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
 
-            loadUrl(startUrl)
+            loadUrl(targetUrl)
+
+            webViewRef = this
         }
     }
 
-    var doublepressBackButton = stringResource(R.string.msg_press_back_again)
+    val doublepressBackButton = stringResource(R.string.msg_press_back_again)
 
     BackHandler(enabled = true) {
         if (webView.canGoBack()) {
@@ -141,6 +143,12 @@ fun WebScreen(
                 doubleBackToExitPressedOnce = true
                 Toast.makeText(context, doublepressBackButton, Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    LaunchedEffect(hasToken) {
+        if (hasToken) {
+            webViewRef?.loadUrl(loggedInUrl)
         }
     }
 
@@ -167,6 +175,9 @@ fun WebScreen(
         factory = { ctx ->
             (webView.parent as? ViewGroup)?.removeView(webView)
             webView
+        },
+        update = { webView ->
+            webViewRef = webView
         }
     )
 }

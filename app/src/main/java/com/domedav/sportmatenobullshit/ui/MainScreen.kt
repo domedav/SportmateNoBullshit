@@ -70,7 +70,7 @@ fun MainScreen(topPadding: Dp) {
     val prefsManager = remember { PreferencesManager(context) }
 
     val userToken by tokenManager.userToken.collectAsState(initial = null)
-    val initialTabIndex by prefsManager.getLastTab().collectAsState(initial = 0)
+    val savedTabIndex by prefsManager.getLastTab().collectAsState(initial = null)
 
     var qrCodeString by remember { mutableStateOf<String?>(null) }
     val api = remember { SportmateApi() }
@@ -78,7 +78,7 @@ fun MainScreen(topPadding: Dp) {
     var isConnected by remember { mutableStateOf(true) }
 
     val pagerState = rememberPagerState(
-        initialPage = initialTabIndex,
+        initialPage = 0,
         pageCount = { tabItems.size }
     )
 
@@ -102,6 +102,14 @@ fun MainScreen(topPadding: Dp) {
         lifecycleOwner.lifecycle.addObserver(observer)
         onDispose {
             lifecycleOwner.lifecycle.removeObserver(observer)
+        }
+    }
+
+    LaunchedEffect(savedTabIndex) {
+        savedTabIndex?.let { index ->
+            if (pagerState.currentPage != index) {
+                pagerState.scrollToPage(index)
+            }
         }
     }
 
@@ -208,6 +216,7 @@ fun MainScreen(topPadding: Dp) {
                                 tokenManager.saveToken(token)
                             }
                         },
+                        hasToken = userToken != null
                     )
                     1 -> QrScreen(
                         topPadding = topPadding,
