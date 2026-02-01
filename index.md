@@ -9,7 +9,7 @@ image: https://raw.githubusercontent.com/domedav/SportmateNoBullshit/master/.git
 
 **The open-source, privacy-first alternative to the official Sportmate app.**
 
-[![Download APK](https://img.shields.io/badge/Download-APK-blue?style=for-the-badge&logo=android)](https://github.com/domedav/SportmateNoBullshit/releases/download/1.2/sportmate-nobs-v1_2.apk)
+[![Download APK](https://img.shields.io/badge/Download-APK-blue?style=for-the-badge&logo=android)](https://github.com/domedav/SportmateNoBullshit/releases/download/1.3/sportmate-nobs-v1_3.apk)
 [![GitHub Source](https://img.shields.io/badge/View-Source_Code-black?style=for-the-badge&logo=github)](https://github.com/domedav/SportmateNoBullshit)
 
 ---
