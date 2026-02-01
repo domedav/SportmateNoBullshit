@@ -100,7 +100,7 @@ fun MainScreen(topPadding: Dp) {
     DisposableEffect(lifecycleOwner) {
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_RESUME && pagerState.currentPage == 1) {
-                refreshQrAction() // As soon as we exit the app, refresh the code, this ensures we can enter or leave into the building, if the app was not used for a while, and is cached
+                refreshQrAction() // As soon as we enter the app, refresh the code, this ensures we can enter or leave into the building, if the app was not used for a while
             }
         }
         lifecycleOwner.lifecycle.addObserver(observer)
@@ -205,7 +205,7 @@ fun MainScreen(topPadding: Dp) {
                     )
                 }
             }
-        }
+        },
     ) { innerPadding ->
         HorizontalPager(
             userScrollEnabled = false, // annoying here, turned off

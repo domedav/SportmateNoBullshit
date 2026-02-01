@@ -16,8 +16,8 @@ android {
         applicationId = "com.domedav.sportmatenobullshit"
         minSdk = 23 // cant be 21, as dependencies require API 23 min
         targetSdk = 36
-        versionCode = 20260122
-        versionName = "2026.01.22"
+        versionCode = 20260201
+        versionName = "2026.02.01"
 
         vectorDrawables {
             useSupportLibrary = true
@@ -26,7 +26,6 @@ android {
 
     signingConfigs {
         create("release") {
-            // Option 1: Using keystore.properties file (recommended)
             val keystorePropertiesFile = rootProject.file("keystore.properties")
             if (keystorePropertiesFile.exists()) {
                 val keystoreProperties = Properties()
@@ -111,4 +110,5 @@ dependencies {
 
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.material)
+    implementation(libs.androidx.material3)
 }

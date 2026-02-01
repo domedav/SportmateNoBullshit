@@ -5,14 +5,50 @@
 	<string name="app_url_loggedin" translatable="false">https://sportmate.hu/profile</string>
 	
 	<string name="menu_web" translatable="false">SportMate</string>
-	<string name="menu_qr">My QRcode</string>
+	<string name="menu_qr">My QR Code</string>
 	
-	<string name="menu_qr_no_token">You must log in first in the SportMate page!</string>
+	<string name="menu_qr_no_token">You must first log in on the SportMate page!</string>
 	<string name="menu_qr_time_left">Time left: %d</string>
-	<string name="menu_qr_how_to_use">Show this code to the gate in order to enter!</string>
+	<plurals name="menu_qr_time_left_seconds_prural">
+		<item quantity="one">second</item>
+		<item quantity="many">seconds</item>
+		<item quantity="other">seconds</item>
+	</plurals>
+	<string name="menu_qr_how_to_use">Scan this code at the gate to enter!</string>
 	<string name="menu_qr_btn_refresh">Refresh QR code</string>
 	
 	<string name="msg_no_internet">No internet connection</string>
 	<string name="msg_no_internet_description">You must have an internet connection to use this application</string>
 	<string name="msg_press_back_again">Press again to exit</string>
+	
+	<string name="about_dialog_title">About</string>
+	<string name="about_section_developer">Developer</string>
+	<string name="about_developer_name" translatable="false">Dömötör Dávid (domedav)</string>
+	<string name="about_section_support">Donate</string>
+	<string name="about_support_description">If you find this application helpful, consider donating to the developer here:</string>
+	<string name="about_btn_support">Support me on GitHub</string>
+	<string name="about_btn_support_link" translatable="false">https://github.com/sponsors/domedav</string>
+	
+	<string name="about_section_dependencies">Dependencies</string>
+	
+	<string-array name="dependency_names" translatable="false">
+		<item>Kotlin &amp; Jetpack Compose</item>
+		<item>Material Design 3</item>
+		<item>Ktor Client</item>
+		<item>ZXing (QR)</item>
+		<item>AndroidX DataStore</item>
+		<item>Coroutines &amp; Flow</item>
+	</string-array>
+	
+	<string-array name="dependency_urls" translatable="false">
+		<item>https://kotlinlang.org/docs/compose-overview.html</item>
+		<item>https://m3.material.io/</item>
+		<item>https://ktor.io/docs/client-create-new-application.html</item>
+		<item>https://github.com/zxing/zxing</item>
+		<item>https://developer.android.com/topic/libraries/architecture/datastore</item>
+		<item>https://kotlinlang.org/docs/coroutines-overview.html</item>
+	</string-array>
+	
+	<string name="about_btn_close">Close</string>
+	<string name="about_icon_desc">Information</string>
 </resources>
