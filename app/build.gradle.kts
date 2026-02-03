@@ -14,10 +14,10 @@ android {
 
     defaultConfig {
         applicationId = "com.domedav.sportmatenobullshit"
-        minSdk = 23 // cant be 21, as dependencies require API 23 min
+        minSdk = 23 // cant be lower, as dependencies require API 23 min
         targetSdk = 36
-        versionCode = 20260201
-        versionName = "2026.02.01"
+        versionCode = 20260203
+        versionName = "2026.02.03"
 
         vectorDrawables {
             useSupportLibrary = true

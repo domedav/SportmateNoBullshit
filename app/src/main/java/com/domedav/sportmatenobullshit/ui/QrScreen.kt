@@ -260,7 +260,7 @@ fun QrScreen(
                     Spacer(modifier = Modifier.height(24.dp))
 
                     Text(
-                        text = stringResource(R.string.menu_qr_time_left, timeLeft) + pluralStringResource(R.plurals.menu_qr_time_left_seconds_prural, timeLeft),
+                        text = stringResource(R.string.menu_qr_time_left, timeLeft) + " " + pluralStringResource(R.plurals.menu_qr_time_left_seconds_prural, timeLeft),
                         style = MaterialTheme.typography.labelLarge,
                         color = MaterialTheme.colorScheme.onSurface
                     )
